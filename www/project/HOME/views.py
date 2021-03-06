@@ -5,7 +5,7 @@ from flask import Flask,\
     
 # /home    
 @home.route('/')
-def show():
+def index():
     return 'This is Book page.'
 
 

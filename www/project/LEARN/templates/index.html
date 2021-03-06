@@ -3,18 +3,34 @@
 <head>
     <meta charset="utf-8">
     <title>{{ name }}'s Watchlist</title>
+    <link rel="icon" href="{{ url_for('learn.static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('learn.static', filename='style.css') }}" type="text/css">
 </head>
 <body>
     <h2>{{ name }}'s Watchlist</h2>
     {# 使用 length 过滤器获取 movies 变量的长度 #}
+
     <p>{{ movies|length }} Titles</p>
     <ul>
         {% for movie in movies %}  {# 迭代 movies 变量 #}
         <li>{{ movie.title }} - {{ movie.year }}</li>  {# 等同于 movie['title'] #}
         {% endfor %}  {# 使用 endfor 标签结束 for 语句 #}
     </ul>
+    <p>Show some photos here:</p>
+    <img src="{{ url_for('learn.static', filename='images/foo.jpg') }}">
+
+    <h2>提示：</h2>
+    <p>提示 当你把 CSS 写到单独的文件后，浏览器获取到这个文件后会对其进行缓存（其他静态文件同理，比如 JavaScript 文件）。所以，在后续章节，每当你对 CSS 文件的内容进行更新后，都需要使用下面的快捷键清除缓存：</p>
+    <ul>
+        <li>Google Chrome（Mac）：Command + Shift + R</li>
+        <li>Google Chrome（Windows & Linux）：Ctrl + F5</li>
+        <li>Firefox（Mac）：Command + Shift + R</li>
+        <li>Firefox（Windows & Linux）：Ctrl + F5</li>
+        <li>Safari：Command + Option + R</li>
+    </ul>    
+    
     <footer>
-        <small>&copy; 2018 <a href="http://helloflask.com/tutorial">HelloFlask</a></small>
+        <small>&copy; 2018 <a href="{{ url_for('home.index') }}">HelloLearning</a></small>
     </footer>
 </body>
 </html>
